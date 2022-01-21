@@ -48,7 +48,7 @@ deploy:
   skip_cleanup: true
   provider: releases
   # The secret api_key will be loaded from the environment variables
-  api_key: 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
+  api_key: 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
   file_glob: true
   file: $HOME/twrp/aa.img
   on:
