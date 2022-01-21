@@ -1,0 +1,49 @@
+#
+# Copyright (C) 2018 The TwrpBuilder Open-Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# Mount point		FStype					Device													Flags
+
+/system       ext4        /system     flags=display="System";backup=1;canbewiped;wipeingui
+/cache        ext4        /dev/block/by-name/cache         /dev/block/sdc55     flags=display="Cache";canbewiped;wipeingui;wipeduringfactoryreset
+/data         f2fs        /dev/block/by-name/userdata      /dev/block/sdc56     flags=length=-16384;display="Data";backup=1;canbewiped;wipeingui;wipeduringfactoryreset;settingsstorage;encryptable=/dev/block/by-name/metadata
+
+/boot         emmc        /dev/block/by-name/boot          /dev/block/sdc48      flags=display="Boot";backup=1;flashimg=1
+/logo         emmc        /dev/block/by-name/logo          /dev/block/sdc50      flags=display="Logo";backup=1;flashimg=1
+/nvram        emmc        /dev/block/by-name/nvram         /dev/block/sdc23      flags=display="NvRAM";backup=1;flashimg=1
+/nvdata       ext4        /dev/block/by-name/nvdata        /dev/block/sdc14     flags=display="NvData";backup=1;flashimg=1
+
+/recovery     emmc        /dev/block/by-name/recovery      /dev/block/sdc1      flags=display="Recovery";backup=1;flashimg=1
+/metadata     emmc        /dev/block/by-name/metadata      /dev/block/sdc15
+
+/external_sd  auto        /devices/platform/externdevice*                                flags=display="Micro SDcard";storage;wipeingui;removable;settingsstorage;backup=0;encryptable=userdata
+/usbotg       vfat        /devices/platform/11200000.usb3_xhci*                                        flags=display="USB-OTG";backup=0;wipeingui;storage;removable
+auto          vfat        /devices/mtk-msdc.0/11230000.msdc0*                   defaults        voldmanaged=sdcard0:auto
+auto          auto        /devices/mtk-msdc.0/11240000.msdc1*                   defaults        voldmanaged=sdcard1:auto;noemulatedsd;encryptable=userdata
+
+
+/lk           emmc        /dev/block/by-name/lk            /dev/block/sdc46      flags=display="Uboot";backup=1;flashimg=1
+/proinfo      emmc        /dev/block/by-name/proinfo       /dev/block/sdc22      flags=display="Proinfo";backup=1
+/protect_f    ext4        /dev/block/by-name/protect1      /dev/block/sdc17      flags=display="Protect_F";backup=1
+/protect_s    ext4        /dev/block/by-name/protect2      /dev/block/sdc18      flags=display="Protect_S";backup=1
+/misc         emmc        /dev/block/by-name/para          /dev/block/sdc3      flags=display="Parametr";backup=1
+
+/tee1         emmc        /dev/block/by-name/tee1          /dev/block/sdc52     flags=display="Tee1";backup=1;flashimg=1
+/tee2         emmc        /dev/block/by-name/tee2          /dev/block/sdc53     flags=display="Tee2";backup=1;flashimg=1
+/persistent   emmc        /dev/block/by-name/frp           /dev/block/sdc9     flags=display="Frp";backup=1
+/expdb        emmc        /dev/block/by-name/expdb         /dev/block/sdc8
+/seccfg       emmc        /dev/block/by-name/seccfg        /dev/block/sdc19
+/oemkeystore  emmc        /dev/block/by-name/oemkeystore   
+/keystore     emmc        /dev/block/by-name/keystore      
